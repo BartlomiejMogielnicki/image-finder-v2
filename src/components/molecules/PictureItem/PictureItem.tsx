@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const StyledWrapper = styled.li`
   width: 100%;
@@ -25,21 +24,17 @@ const StyledImage = styled.img`
   }
 `;
 
-const PictureItem = ({ id, urlSmall, alt, clicked }) => (
+type Props = {
+  id: string,
+  urlSmall: string,
+  alt: string,
+  clicked: () => void,
+}
+
+const PictureItem: React.FC<Props>= ({ id, urlSmall, alt, clicked }) => (
   <StyledWrapper id={id} onClick={clicked} data-testid="picture-item">
     <StyledImage src={urlSmall} alt={alt} />
   </StyledWrapper>
 );
-
-PictureItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  urlSmall: PropTypes.string.isRequired,
-  alt: PropTypes.string,
-  clicked: PropTypes.func.isRequired,
-};
-
-PictureItem.defaultProps = {
-  alt: 'image',
-};
 
 export default PictureItem;

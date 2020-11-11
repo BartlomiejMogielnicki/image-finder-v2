@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import Button from '../../atoms/Button/Button';
 
@@ -136,7 +135,32 @@ const StyledModalBackdrop = styled.div`
   cursor: zoom-out;
 `;
 
-const PictureModal = ({
+type Props = {
+  picture: {
+    id: string,
+    url: {
+      small: string,
+      regular: string
+    },
+    alt: string,
+    likes: number,
+    location: {
+      country: string,
+      city: string,
+    },
+    owner: {
+      name: string,
+      image: string,
+      twitter: string
+    }
+  },
+  pictureIndex: number,
+  lastIndex: number,
+  hideModal: () => void,
+  changePicture: (num: number) => void
+}
+
+const PictureModal: React.FC<Props> = ({
   picture,
   pictureIndex,
   lastIndex,
@@ -187,28 +211,6 @@ const PictureModal = ({
       <StyledModalBackdrop onClick={() => hideModal()} />
     </StyledModalWrapper>
   );
-};
-
-PictureModal.propTypes = {
-  picture: PropTypes.shape({
-    id: PropTypes.string,
-    url: PropTypes.string,
-    alt: PropTypes.string,
-    likes: PropTypes.number,
-    location: PropTypes.shape({
-      country: PropTypes.string,
-      city: PropTypes.string,
-    }),
-    owner: PropTypes.shape({
-      name: PropTypes.string,
-      image: PropTypes.string,
-      twitter: PropTypes.string,
-    }),
-  }).isRequired,
-  pictureIndex: PropTypes.number.isRequired,
-  lastIndex: PropTypes.number.isRequired,
-  hideModal: PropTypes.func.isRequired,
-  changePicture: PropTypes.func.isRequired,
 };
 
 export default PictureModal;

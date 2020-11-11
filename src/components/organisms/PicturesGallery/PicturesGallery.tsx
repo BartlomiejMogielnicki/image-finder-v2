@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import { fetchSinglePicture } from '../../../utils/index';
 
@@ -29,12 +28,35 @@ const StyledError = styled.div`
   z-index: 1001;
 `;
 
-const PicturesGallery = ({ picturesArray }) => {
-  const [modalPicture, setModalPicture] = useState('');
-  const [modalPictureIndex, setModalPictureIndex] = useState('');
+type Picture = {
+  id: string,
+  url: {
+    small: string,
+    regular: string
+  },
+  alt: string,
+  likes: number,
+  location: {
+    country: string,
+    city: string,
+  },
+  owner: {
+    name: string,
+    image: string,
+    twitter: string
+}
+}
+
+type Props = {
+  picturesArray: Picture[],
+}
+
+const PicturesGallery: React.FC<Props> = ({ picturesArray }) => {
+  const [modalPicture, setModalPicture] = useState<Picture | null>(null);
+  const [modalPictureIndex, setModalPictureIndex] = useState<number>(0);
   const [isModalError, setIsModalError] = useState(false);
 
-  const handleGetPicture = async (id, index) => {
+  const handleGetPicture = async (id: string, index: number) => {
     setIsModalError(false);
     const fetchedPicture = await fetchSinglePicture(id);
     if (fetchedPicture instanceof Error) {
@@ -47,10 +69,10 @@ const PicturesGallery = ({ picturesArray }) => {
   };
 
   const handleHideModal = () => {
-    setModalPicture('');
+    setModalPicture(null);
   };
 
-  const handleChangeModalPicture = (index) => {
+  const handleChangeModalPicture = (index: number) => {
     handleGetPicture(picturesArray[index].id, index);
   };
 
@@ -81,14 +103,6 @@ const PicturesGallery = ({ picturesArray }) => {
       )}
     </StyledListWrapper>
   );
-};
-
-PicturesGallery.propTypes = {
-  picturesArray: PropTypes.arrayOf(PropTypes.object),
-};
-
-PicturesGallery.defaultProps = {
-  picturesArray: null,
 };
 
 export default PicturesGallery;

@@ -40,14 +40,14 @@ type StyledButtonProps = {
   rightArrow?: boolean,
 }
 
-type ButtonProps = {
+type Props = {
   clicked: () => void,
   children: React.ReactNode,
   leftArrow?: boolean,
   rightArrow?: boolean,
 }
 
-const Button: React.FC<ButtonProps> = ({ clicked, children, leftArrow, rightArrow}) => (
+const Button: React.FC<Props> = ({ clicked, children, leftArrow, rightArrow}) => (
   <StyledButton
     onClick={clicked}
     leftArrow={leftArrow}
