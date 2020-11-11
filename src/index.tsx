@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import RootView from './views/RootView';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RootView />
   </React.StrictMode>,
   document.getElementById('root')
 );
