@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import { fetchPictures } from '../utils/index';
+import type {Picture} from '../types/index';
 
 import image1 from '../images/image1.jpg';
 import SearchForm from '../components/molecules/SearchForm/SearchForm';
@@ -57,25 +58,6 @@ const StyledBackground = styled.div`
   background-position: center;
   z-index: -1;
 `;
-
-type Picture = {
-  id: string;
-  url: {
-    small: string;
-    regular: string;
-  };
-  alt: string;
-  likes: number;
-  location: {
-    country: string;
-    city: string;
-  };
-  owner: {
-    name: string;
-    image: string;
-    twitter: string;
-  };
-};
 
 type Props = {
   location: {

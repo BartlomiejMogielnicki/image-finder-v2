@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import type {Picture} from '../../../types/index';
+
 import Button from '../../atoms/Button/Button';
 
 const StyledModalWrapper = styled.div`
@@ -136,24 +138,7 @@ const StyledModalBackdrop = styled.div`
 `;
 
 type Props = {
-  picture: {
-    id: string,
-    url: {
-      small: string,
-      regular: string
-    },
-    alt: string,
-    likes: number,
-    location: {
-      country: string,
-      city: string,
-    },
-    owner: {
-      name: string,
-      image: string,
-      twitter: string
-    }
-  },
+  picture: Picture,
   pictureIndex: number,
   lastIndex: number,
   hideModal: () => void,
@@ -187,7 +172,7 @@ const PictureModal: React.FC<Props> = ({
           <StyledIcon className="fas fa-thumbs-up" />
           <StyledParagraph>{picture.likes}</StyledParagraph>
         </StyledLikesInfo>
-        {picture.location.country && (
+        {picture.location?.country && (
           <StyledLocationInfo>
             <i className="fas fa-map-marker-alt" />
             <StyledParagraph>{picture.location.country}</StyledParagraph>

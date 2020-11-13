@@ -1,23 +1,5 @@
 import axios from 'axios';
-
-type Picture = {
-  id: string;
-  url: {
-    small: string;
-    regular: string;
-  };
-  alt: string;
-  likes: number;
-  location?: {
-    country: string;
-    city: string;
-  };
-  owner: {
-    name: string;
-    image: string;
-    twitter: string;
-  };
-};
+import type { Picture, PictureFetched } from '../types/index';
 
 export const fetchSinglePicture = (id: string) => {
   const fetchedPicture = axios
@@ -53,21 +35,6 @@ export const fetchSinglePicture = (id: string) => {
   return fetchedPicture;
 };
 
-interface PicturesFetched {
-  id: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-  alt_description: string;
-  likes: number;
-  user: {
-    name: string;
-    profile_image: string;
-    twitter_username: string;
-  };
-}
-
 export const fetchPictures = (searchTerm: string, page: number) => {
   const fetchedPictures = axios
     .get('https://api.unsplash.com/search/photos', {
@@ -80,7 +47,7 @@ export const fetchPictures = (searchTerm: string, page: number) => {
     })
     .then((response) => {
       const picturesArray: Picture[] = response.data.results.map(
-        (item: PicturesFetched) => ({
+        (item: PictureFetched) => ({
           id: item.id,
           url: {
             small: item.urls.small,

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { fetchSinglePicture } from '../../../utils/index';
+import type {Picture} from '../../../types/index';
 
 import PictureItem from '../../molecules/PictureItem/PictureItem';
 import PictureModal from '../PictureModal/PictureModal';
@@ -28,25 +29,6 @@ const StyledError = styled.div`
   z-index: 1001;
 `;
 
-type Picture = {
-  id: string,
-  url: {
-    small: string,
-    regular: string
-  },
-  alt: string,
-  likes: number,
-  location: {
-    country: string,
-    city: string,
-  },
-  owner: {
-    name: string,
-    image: string,
-    twitter: string
-  }
-}
-
 type Props = {
   picturesArray: Picture[],
 }
@@ -54,7 +36,7 @@ type Props = {
 const PicturesGallery: React.FC<Props> = ({ picturesArray }) => {
   const [modalPicture, setModalPicture] = useState<Picture | null>(null);
   const [modalPictureIndex, setModalPictureIndex] = useState<number>(0);
-  const [isModalError, setIsModalError] = useState(false);
+  const [isModalError, setIsModalError] = useState<boolean>(false);
 
   const handleGetPicture = async (id: string, index: number) => {
     setIsModalError(false);
