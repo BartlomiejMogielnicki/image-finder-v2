@@ -30,7 +30,10 @@ export const fetchSinglePicture = (id: string) => {
       const item = response.data;
       const picture: Picture = {
         id: item.id,
-        url: item.urls.regular,
+        url: {
+          small: item.urls.small,
+          regular: item.urls.regular,
+        },
         alt: item.alt_description,
         likes: item.likes,
         location: {

@@ -136,7 +136,6 @@ const StyledModalBackdrop = styled.div`
 `;
 
 type Props = {
-  
   picture: {
     id: string,
     url: {
