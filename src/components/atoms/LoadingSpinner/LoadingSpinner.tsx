@@ -29,7 +29,7 @@ const StyledLoadingSpinner = styled.div<Props>`
 `;
 
 type Props = {
-  center: boolean
+  center?: boolean
 }
 
 const LoadingSpinner: React.FC<Props> = ({ center }) => (

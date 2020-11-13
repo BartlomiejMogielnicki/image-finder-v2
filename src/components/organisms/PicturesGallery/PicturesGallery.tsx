@@ -44,7 +44,7 @@ type Picture = {
     name: string,
     image: string,
     twitter: string
-}
+  }
 }
 
 type Props = {

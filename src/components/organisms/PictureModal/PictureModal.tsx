@@ -136,6 +136,7 @@ const StyledModalBackdrop = styled.div`
 `;
 
 type Props = {
+  
   picture: {
     id: string,
     url: {
@@ -196,7 +197,7 @@ const PictureModal: React.FC<Props> = ({
             )}
           </StyledLocationInfo>
         )}
-        <StyledImage src={picture.url} alt={picture.alt} />
+        <StyledImage src={picture.url.regular} alt={picture.alt} />
         {pictureIndex !== 0 && (
           <Button leftArrow clicked={() => changePicture(pictureIndex - 1)}>
             <i className="fas fa-angle-left" />

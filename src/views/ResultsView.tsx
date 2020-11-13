@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import PropTypes from 'prop-types';
 
 import { fetchPictures } from '../utils/index';
 
@@ -59,14 +58,40 @@ const StyledBackground = styled.div`
   z-index: -1;
 `;
 
-const ResultsView = ({ location }) => {
+type Picture = {
+  id: string;
+  url: {
+    small: string;
+    regular: string;
+  };
+  alt: string;
+  likes: number;
+  location: {
+    country: string;
+    city: string;
+  };
+  owner: {
+    name: string;
+    image: string;
+    twitter: string;
+  };
+};
+
+type Props = {
+  location: {
+    state: string,
+    pathname: string
+  }
+}
+
+const ResultsView: React.FC<Props> = ({ location }) => {
   const { state: searchTerm } = location;
 
-  const [galleryPictures, setGalleryPictures] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [galleryPictures, setGalleryPictures] = useState<Picture[]>([]);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const handleGetPictures = async () => {
     const fetchedPicturesArray = await fetchPictures(searchTerm, 1);
@@ -89,7 +114,7 @@ const ResultsView = ({ location }) => {
     } else {
       const noDuplicatesArray = galleryPictures;
       const picturesIdsArray = noDuplicatesArray.map((item) => item.id);
-      fetchedPicturesArray.forEach((item) => {
+      fetchedPicturesArray.forEach((item: Picture) => {
         if (!picturesIdsArray.includes(item.id)) {
           noDuplicatesArray.push(item);
         }
@@ -133,19 +158,6 @@ const ResultsView = ({ location }) => {
       <StyledBackground />
     </StyledWrapper>
   );
-};
-
-ResultsView.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-};
-
-ResultsView.defaultProps = {
-  location: {
-    pathname: '',
-  },
 };
 
 export default ResultsView;

@@ -1,6 +1,25 @@
 import axios from 'axios';
 
-export const fetchSinglePicture = (id) => {
+type Picture = {
+  id: string;
+  url: {
+    small: string;
+    regular: string;
+  };
+  alt: string;
+  likes: number;
+  location?: {
+    country: string;
+    city: string;
+  };
+  owner: {
+    name: string;
+    image: string;
+    twitter: string;
+  };
+};
+
+export const fetchSinglePicture = (id: string) => {
   const fetchedPicture = axios
     .get(`https://api.unsplash.com/photos/${id}`, {
       params: {
@@ -9,7 +28,7 @@ export const fetchSinglePicture = (id) => {
     })
     .then((response) => {
       const item = response.data;
-      const picture = {
+      const picture: Picture = {
         id: item.id,
         url: item.urls.regular,
         alt: item.alt_description,
@@ -31,7 +50,22 @@ export const fetchSinglePicture = (id) => {
   return fetchedPicture;
 };
 
-export const fetchPictures = (searchTerm, page) => {
+interface PicturesFetched {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
+  alt_description: string;
+  likes: number;
+  user: {
+    name: string;
+    profile_image: string;
+    twitter_username: string;
+  };
+}
+
+export const fetchPictures = (searchTerm: string, page: number) => {
   const fetchedPictures = axios
     .get('https://api.unsplash.com/search/photos', {
       params: {
@@ -42,20 +76,22 @@ export const fetchPictures = (searchTerm, page) => {
       },
     })
     .then((response) => {
-      const picturesArray = response.data.results.map((item) => ({
-        id: item.id,
-        url: {
-          small: item.urls.small,
-          regular: item.urls.regular,
-        },
-        alt: item.alt_description,
-        likes: item.likes,
-        owner: {
-          name: item.user.name,
-          image: item.user.profile_image.small,
-          twitter: item.user.twitter_username,
-        },
-      }));
+      const picturesArray: Picture[] = response.data.results.map(
+        (item: PicturesFetched) => ({
+          id: item.id,
+          url: {
+            small: item.urls.small,
+            regular: item.urls.regular,
+          },
+          alt: item.alt_description,
+          likes: item.likes,
+          owner: {
+            name: item.user.name,
+            image: item.user.profile_image.small,
+            twitter: item.user.twitter_username,
+          },
+        })
+      );
       return picturesArray;
     })
     .catch((error) => error);
