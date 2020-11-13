@@ -76,7 +76,7 @@ const ResultsView: React.FC<Props> = ({ location }) => {
   const [isError, setIsError] = useState<boolean>(false);
 
   const handleGetPictures = async () => {
-    const fetchedPicturesArray = await fetchPictures(searchTerm, 1);
+    const fetchedPicturesArray: Picture[] = await fetchPictures(searchTerm, 1);
     if (fetchedPicturesArray instanceof Error) {
       setIsError(true);
       setIsInitialLoading(false);
@@ -89,7 +89,7 @@ const ResultsView: React.FC<Props> = ({ location }) => {
   };
 
   const handleGetMorePictures = async () => {
-    const fetchedPicturesArray = await fetchPictures(searchTerm, pageNumber);
+    const fetchedPicturesArray: Picture[] = await fetchPictures(searchTerm, pageNumber);
     if (fetchedPicturesArray instanceof Error) {
       setIsError(true);
       setIsLoading(false);

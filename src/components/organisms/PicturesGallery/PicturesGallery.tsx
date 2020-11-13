@@ -40,7 +40,7 @@ const PicturesGallery: React.FC<Props> = ({ picturesArray }) => {
 
   const handleGetPicture = async (id: string, index: number) => {
     setIsModalError(false);
-    const fetchedPicture = await fetchSinglePicture(id);
+    const fetchedPicture: Picture = await fetchSinglePicture(id);
     if (fetchedPicture instanceof Error) {
       setIsModalError(true);
     } else {
