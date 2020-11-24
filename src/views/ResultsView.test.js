@@ -8,9 +8,13 @@ describe('ResultsView component', () => {
     state: 'passedSearchTerm',
     pathname: '',
   };
+  const placeHolderText = 'Search high-resolution photos';
   it('should render properly', () => {
-    const { getByTestId } = render(<ResultsView location={location} />);
+    const { getByTestId, getByPlaceholderText } = render(
+      <ResultsView location={location} />
+    );
 
     expect(getByTestId('results-view')).toBeInTheDocument();
+    expect(getByPlaceholderText(placeHolderText)).toBeInTheDocument();
   });
 });
