@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SearchForm from '../components/molecules/SearchForm/SearchForm';
-import image1 from '../images/image1.jpg';
+import SearchForm from 'components/molecules/SearchForm/SearchForm';
+import image1 from 'images/image1.jpg';
 
 const StyledWrapper = styled.div`
   min-height: 100vh;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import GlobalStyle from '../theme/GlobalStyle';
-import SearchView from './SearchView';
-import ResultsView from './ResultsView';
+import GlobalStyle from 'theme/GlobalStyle';
+import SearchView from 'views/SearchView';
+import ResultsView from 'views/ResultsView';
 
 const RootView: React.FC = () => {
   return (

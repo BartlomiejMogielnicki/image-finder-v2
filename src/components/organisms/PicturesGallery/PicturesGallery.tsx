@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { fetchSinglePicture } from '../../../utils/index';
-import type {Picture} from '../../../types/index';
+import { fetchSinglePicture } from 'utils/index';
+import type {Picture} from 'types/index';
 
-import PictureItem from '../../molecules/PictureItem/PictureItem';
-import PictureModal from '../PictureModal/PictureModal';
+import PictureItem from 'components/molecules/PictureItem/PictureItem';
+import PictureModal from 'components/organisms/PictureModal/PictureModal';
 
 const StyledListWrapper = styled.ul`
   width: 100%;

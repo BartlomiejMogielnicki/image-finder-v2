@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Picture, PictureFetched } from '../types/index';
+import type { Picture, PictureFetched } from 'types/index';
 
 export const fetchSinglePicture = (id: string) => {
   const fetchedPicture = axios

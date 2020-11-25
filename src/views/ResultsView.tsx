@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { fetchPictures } from '../utils/index';
-import type {Picture} from '../types/index';
+import { fetchPictures } from 'utils/index';
+import type {Picture} from 'types/index';
 
-import image1 from '../images/image1.jpg';
-import SearchForm from '../components/molecules/SearchForm/SearchForm';
-import PicturesGallery from '../components/organisms/PicturesGallery/PicturesGallery';
-import LoadingSpinner from '../components/atoms/LoadingSpinner/LoadingSpinner';
+import image1 from 'images/image1.jpg';
+import SearchForm from 'components/molecules/SearchForm/SearchForm';
+import PicturesGallery from 'components/organisms/PicturesGallery/PicturesGallery';
+import LoadingSpinner from 'components/atoms/LoadingSpinner/LoadingSpinner';
 
 const showIn = keyframes`
 from {

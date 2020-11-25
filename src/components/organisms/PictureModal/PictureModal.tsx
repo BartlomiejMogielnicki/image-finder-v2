@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type {Picture} from '../../../types/index';
+import type {Picture} from 'types/index';
 
-import Button from '../../atoms/Button/Button';
+import Button from 'components/atoms/Button/Button';
 
 const StyledModalWrapper = styled.div`
   position: fixed;
