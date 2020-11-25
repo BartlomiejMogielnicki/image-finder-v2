@@ -25,6 +25,11 @@ const StyledInput = styled.input`
   padding: 10px;
   font-size: 1.1rem;
   border-radius: 10px;
+
+  
+  @media (max-width: 500px) {
+    font-size: 1.0rem;
+  }
 `;
 
 const StyledAutocompleteContainer = styled.div`

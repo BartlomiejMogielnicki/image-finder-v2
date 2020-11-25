@@ -5,11 +5,8 @@ const StyledWrapper = styled.li`
   width: 100%;
   max-width: 425px;
   justify-self: center;
+  text-align: center;
   cursor: zoom-in;
-
-  @media (max-width: 500px) {
-    width: 80%;
-  }
 `;
 
 const StyledImage = styled.img`
@@ -21,6 +18,10 @@ const StyledImage = styled.img`
 
   :hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 500px) {
+    width: 80%;
   }
 `;
 
