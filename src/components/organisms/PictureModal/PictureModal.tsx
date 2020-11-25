@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 
 import type {Picture} from 'types/index';
@@ -153,6 +153,16 @@ const PictureModal: React.FC<Props> = ({
   changePicture,
 }) => {
   const twitterUrl = `https://twitter.com/${picture.owner.twitter}`;
+
+  const enableScroll = ():void => {
+    document.body.style.overflow = 'scroll'
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => enableScroll()
+  }, [])
+
   return (
     <StyledModalWrapper data-testid="picture-modal">
       <StyledContainer>
