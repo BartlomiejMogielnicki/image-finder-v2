@@ -20,6 +20,7 @@ to {
 `;
 
 const StyledWrapper = styled.div`
+  padding-left: calc(100vw - 100%); 
   padding-top: 20px;
   padding-bottom: 100px;
   min-height: 100vh;
