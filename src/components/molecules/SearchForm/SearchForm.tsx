@@ -126,7 +126,7 @@ const SearchForm: React.FC = () => {
         </StyledAutocompleteContainer>
       )}
       {submittedTerm && (
-        <Redirect to={{ pathname: '/results', state: submittedTerm }} />
+        <Redirect to={{ pathname: `/results/${submittedTerm}`, state: submittedTerm }} />
       )}
     </StyledForm>
   );

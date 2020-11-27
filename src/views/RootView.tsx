@@ -10,7 +10,7 @@ const RootView: React.FC = () => {
     <BrowserRouter>
       <GlobalStyle />
       <Route path="/" exact component={SearchView} />
-      <Route path="/results" component={ResultsView} />
+      <Route path="/results/:id" component={ResultsView} />
     </BrowserRouter>
   );
 };
