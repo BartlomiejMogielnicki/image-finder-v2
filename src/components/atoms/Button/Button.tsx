@@ -15,7 +15,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ leftArrow }) =>
     leftArrow &&
     css`
-      left: -100px;
+      left: -80px;
 
       @media (max-width: 1400px) and (orientation: portrait) {
         left: 50%;
@@ -26,7 +26,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ rightArrow }) =>
     rightArrow &&
     css`
-      right: -100px;
+      right: -80px;
 
       @media (max-width: 1400px) and (orientation: portrait) {
         right: 50%;

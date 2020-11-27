@@ -20,8 +20,8 @@ const StyledModalWrapper = styled.div`
 
 const StyledContainer = styled.div`
   padding: 60px 30px;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 80%;
+  max-height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,10 +31,16 @@ const StyledContainer = styled.div`
 
   @media (max-width: 800px) {
     padding: 10px;
+    max-width: 90%;
   }
 
   @media (max-height: 800px) {
     padding: 10px;
+  }
+
+  @media (max-height: 800px) and (orientation: landscape) {
+    padding: 10px;
+    max-width: 70%;
   }
 `;
 
