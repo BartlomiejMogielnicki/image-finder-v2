@@ -118,6 +118,26 @@ const StyledLocationInfo = styled.div`
   }
 `;
 
+const StyledDateInfo = styled.div`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    padding: 2px;
+    background-color: white;
+    font-size: 0.7rem;
+  }
+
+  @media (max-height: 800px) {
+    padding: 2px;
+    background-color: white;
+    font-size: 0.7rem;
+  }
+  `
+
 const StyledImage = styled.img`
   max-width: 100%;
   max-height: 100%;
@@ -191,6 +211,11 @@ const PictureModal: React.FC<Props> = ({
             )}
           </StyledLocationInfo>
         )}
+          <StyledDateInfo>
+            <StyledParagraph>
+              {picture.date.substring(0,7)}
+            </StyledParagraph>
+          </StyledDateInfo>
         <StyledImage src={picture.url.regular} alt={picture.alt} />
         {pictureIndex !== 0 && (
           <Button leftArrow clicked={() => changePicture(pictureIndex - 1)}>

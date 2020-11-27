@@ -22,6 +22,7 @@ export const fetchSinglePicture = (id: string) => {
           country: item.location.country,
           city: item.location.city,
         },
+        date: item.created_at,
         owner: {
           name: item.user.name,
           image: item.user.profile_image.small,
@@ -31,7 +32,6 @@ export const fetchSinglePicture = (id: string) => {
       return picture;
     })
     .catch((error) => error);
-
   return fetchedPicture;
 };
 

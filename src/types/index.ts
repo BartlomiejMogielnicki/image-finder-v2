@@ -10,6 +10,7 @@ export interface Picture {
     country: string;
     city: string;
   };
+  date: string;
   owner: {
     name: string;
     image: string;
