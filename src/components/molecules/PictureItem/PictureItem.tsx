@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.li`
+  margin-top: 20px;
   width: 100%;
-  max-width: 425px;
+  max-width: 450px;
   justify-self: center;
   text-align: center;
   cursor: zoom-in;
@@ -12,7 +13,7 @@ const StyledWrapper = styled.li`
 const StyledImage = styled.img`
   width: 100%;
   height: 100%;
-  max-height: 400px;
+  max-height: 450px;
   object-fit: cover;
   transition: 0.3s;
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Masonry from 'react-masonry-css'
 import styled from 'styled-components';
 
 import { fetchSinglePicture } from 'utils/index';
@@ -10,14 +11,6 @@ import PictureModal from 'components/organisms/PictureModal/PictureModal';
 const StyledListWrapper = styled.ul`
   width: 100%;
   max-width: 1350px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(425px, 1fr));
-  grid-auto-rows: minmax(50px, auto);
-  grid-gap: 20px 10px;
-
-  @media (max-width: 500px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const StyledError = styled.div`
@@ -72,9 +65,18 @@ const PicturesGallery: React.FC<Props> = ({ picturesArray }) => {
     />
   ));
 
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1
+  };
+
   return (
     <StyledListWrapper data-testid="pictures-gallery">
+      <Masonry  breakpointCols={breakpointColumnsObj} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
       {pictures}
+      </Masonry>
       {isModalError && (
         <StyledError>Connection failed... Please try again.</StyledError>
       )}
