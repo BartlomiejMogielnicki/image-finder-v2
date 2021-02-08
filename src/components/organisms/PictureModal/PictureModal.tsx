@@ -181,7 +181,7 @@ const PictureModal: React.FC<Props> = ({
   const twitterUrl = `https://twitter.com/${picture.owner.twitter}`;
 
   const enableScroll = ():void => {
-    document.body.style.overflow = 'scroll'
+    document.body.style.overflow = 'auto'
   }
 
   useEffect(() => {
